@@ -36,9 +36,9 @@
                     {% endif %}
                 {% endfor %}
                 <h4>Post a Comment</h4>
-                <textarea class="commentsNew" form="postComment" name="newComment" cols="70"></textarea>
-                <form id="postComment" action="/postComment" method="post">
-                    <br>
+                <form action="/postComment" method="post">
+                    <textarea class="commentsNew" name="newComment" cols="70"></textarea>
+                    <br><br>
                     <input type="hidden" name="messageID" value={{ oldMessages['id'] }}>
                     <input class="postButton commentButton" type="submit" name="postComment" value="Post a Comment">
                 </form>
