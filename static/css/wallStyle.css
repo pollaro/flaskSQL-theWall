@@ -1,0 +1,98 @@
+*{
+    text-align: center;
+    resize: none;
+}
+
+.titleBar{
+    background-color: cornflowerblue;
+    padding: 1%;
+    text-align: left;
+    border-bottom: solid thin black;
+}
+
+#titleName{
+    text-align: left;
+    display: inline-block;
+    font-size: 18pt;
+    color: white;
+}
+
+#titleWelcome{
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    float: right;
+    padding-top: 0.3%;
+}
+
+.logoutBut{
+    display: inline-block;
+}
+
+.logoutBut input{
+    border-style: none;
+    background-color: transparent;
+    color: blue;
+    margin-left: 10%;
+}
+
+.postButton{
+    float: right;
+    margin-right: 33%;
+    background-color: royalblue;
+    border-radius: 4px;
+    color: white;
+    border-style: none;
+    padding: 0.5%;
+    margin-top: -1%;
+
+}
+
+.messageIn{
+    border: solid thin black;
+    width: 43%;
+
+}
+
+.postMsg textarea{
+    border: solid thin black;
+    text-align: left;
+    font-size: 14pt;
+}
+
+.postMsg h2{
+    display: block;
+    margin-right: 40%;
+}
+
+.oldPostsBox{
+    margin-top: 5%;
+}
+
+.oldPosts{
+    text-align: left;
+    border: none;
+    font-size: 14pt;
+}
+
+.oldName{
+    margin-right: 40%;
+}
+
+.commentsOld{
+    text-align: left;
+    border: none;
+}
+
+.comments h4{
+    margin-right: 30%;
+    font-weight: normal;
+}
+
+.commentsNew{
+    border: solid black thin;
+}
+
+.commentButton{
+    background-color: mediumseagreen;
+}

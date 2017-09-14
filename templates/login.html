@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Login</title>
-        <link rel="stylesheet" href="../static/css/loginStyle.css">
-        <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/loginStyle.css')}}"> -->
+        <!-- <link rel="stylesheet" href="../static/css/loginStyle.css"> -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/loginStyle.css')}}">
     </head>
     <body>
         <div class="titleBar">
@@ -16,36 +16,36 @@
             <form action="/register" method="post">
                 {% with inUse = get_flashed_messages(category_filter='emailInUse') %}
                     {% if inUse %}
-                        <span>{{ inUse[0] }}</span><br>
+                        <span class="error">{{ inUse[0] }}</span><br>
                     {% endif %}
                 {% endwith %}
                 {% with first = get_flashed_messages(category_filter='firstError') %}
                     {% if first %}
-                        <span>{{ first[0] }}</span><br>
+                        <span class="error">{{ first[0] }}</span><br>
                     {% endif %}
                 {% endwith %}
                 First Name: <input type="text" name="firstName"><br>
                 {% with last = get_flashed_messages(category_filter='lastError') %}
                     {% if last %}
-                        <span>{{ last[0] }}</span><br>
+                        <span class="error">{{ last[0] }}</span><br>
                     {% endif %}
                 {% endwith %}
                 Last Name: <input type="text" name="lastName"><br>
                 {% with emailErr = get_flashed_messages(category_filter='emailError') %}
                     {% if emailErr %}
-                        <span>{{ emailErr[0] }}</span><br>
+                        <span class="error">{{ emailErr[0] }}</span><br>
                     {% endif %}
                 {% endwith %}
                 Email: <input type="text" name="emailAdd"><br>
                 {% with passShrt = get_flashed_messages(category_filter='passShort') %}
                     {% if passShrt %}
-                        <span>{{ passShrt[0] }}</span><br>
+                        <span class="error">{{ passShrt[0] }}</span><br>
                     {% endif %}
                 {% endwith %}
                 Password: <input type="password" name="passWord"><br>
                 {% with passMtch = get_flashed_messages(category_filter='passMatch') %}
                     {% if passMtch %}
-                        <span>{{ passMtch[0] }}</span><br>
+                        <span class="error">{{ passMtch[0] }}</span><br>
                     {% endif %}
                 {% endwith %}
                 Confirm Password: <input type="password" name="passConf"><br>
@@ -55,9 +55,19 @@
         <div id="loginBox">
             <span class="title">Login:</span>
             <br>
+            {% with errors = get_flashed_messages(category_filter='loginEmail') %}
+                {% if errors %}
+                    <span class="error">{{ errors[0] }}</span><br>
+                {% endif %}
+            {% endwith %}
             {% with errors = get_flashed_messages(category_filter='loginError') %}
                 {% if errors %}
-                    <span>{{ errors[0] }}</span><br>
+                    <span class="error">{{ errors[0] }}</span><br>
+                {% endif %}
+            {% endwith %}
+            {% with errors = get_flashed_messages(category_filter='noPass') %}
+                {% if errors %}
+                    <span class="error">{{ errors[0] }}</span><br>
                 {% endif %}
             {% endwith %}
             <form action="/login" method="post">

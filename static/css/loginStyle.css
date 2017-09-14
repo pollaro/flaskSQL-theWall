@@ -39,3 +39,7 @@ input{
     font-weight: bold;
     font-size: 16pt;
 }
+
+.error{
+    color: red;
+}

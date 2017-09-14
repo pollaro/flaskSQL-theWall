@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>THE WALL</title>
+        <!-- <link rel="stylesheet" href="../static/css/wallStyle.css"> -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/wallStyle.css')}}">
+    </head>
+    <body>
+        <div class="titleBar">
+            <span id="titleName">CodingDojo Wall</span>
+            <span id="titleWelcome">Welcome {{ session['firstName'] }}
+                <form class="logoutBut" action="/logout" method="post">
+                    <input type="submit" name="logoutButton" value="Log Out">
+                </form>
+            </span>
+        </div>
+        <br>
+        <div class="postMsg">
+            <h2>Post a Message</h2>
+            <textarea form="postMessage" name="newMessage" rows="8" cols="70"></textarea>
+            <form id="postMessage" action="/postMessage" method="post">
+                <br>
+                <input class="postButton" type="submit" name="postMessage" value="Post a Message">
+            </form>
+        </div>
+        <div class="oldPostsBox">
+            {% for oldMessages in messages %}
+                <h3 class="oldName">{{ oldMessages['first_name'] }} {{ oldMessages['last_name'] }} {{ oldMessages['created_at'].strftime('%b %-m %Y %-I:%M %p') }}</h3>
+                <textarea class="oldPosts" cols="70">{{ oldMessages['message'] }}</textarea>
+            <div class="comments">
+                {% for oldComments in comments %}
+                    {% if oldComments['message_id'] == oldMessages['id'] %}
+                        <h4 class="commentName">{{ oldComments['first_name'] }} {{ oldComments['last_name'] }} {{ oldComments['created_at'].strftime('%b %-m %Y %-I:%M %p') }}</h4>
+                        <textarea class='commentsOld' name="oldComments" cols="60">{{ oldComments['comment'] }}</textarea>
+                    {% endif %}
+                {% endfor %}
+                <h4>Post a Comment</h4>
+                <textarea class="commentsNew" form="postComment" name="newComment" cols="70"></textarea>
+                <form id="postComment" action="/postComment" method="post">
+                    <br>
+                    <input type="hidden" name="messageID" value={{ oldMessages['id'] }}>
+                    <input class="postButton commentButton" type="submit" name="postComment" value="Post a Comment">
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
